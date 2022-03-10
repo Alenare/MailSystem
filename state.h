@@ -8,6 +8,8 @@ using namespace std;
 
 void PrintAbreviations();
 
+bool RealAbbreviation(string abbreviation);
+
 void PrintAbreviations(){
     string option;
     bool canExit = false;
@@ -124,6 +126,67 @@ void PrintAbreviations(){
 	        cout << "Not a valid state try again" << endl;
 	    }
     }
+	
+	bool RealAbbreviation(string abbreviation){
+		string option;
+		bool isGood = true;
+    
+	    if(option == "AL"){
+			//Do Nothing
+	    }else if(option == "AK"){
+	    }else if(option == "AZ"){
+	    }else if(option == "AK"){
+	    }else if(option == "CA"){
+	    }else if(option == "CO"){
+	    }else if(option == "CT"){
+	    }else if(option == "DE"){
+	    }else if(option == "FL"){
+	    }else if(option == "GA"){
+	    }else if(option == "HI"){
+	    }else if(option == "ID"){
+	    }else if(option == "IL"){
+	    }else if(option == "IN"){
+	    }else if(option == "IA"){
+	    }else if(option == "KS"){
+	    }else if(option == "KT"){
+	    }else if(option == "LA"){
+	    }else if(option == "ME"){
+	    }else if(option == "MD"){
+	    }else if(option == "MA"){
+	    }else if(option == "MI"){
+	    }else if(option == "MN"){
+	    }else if(option == "MS"){
+	    }else if(option == "MO"){
+	    }else if(option == "MT"){
+	    }else if(option == "NE"){
+	    }else if(option == "NV"){
+	    }else if(option == "NH"){
+	    }else if(option == "NJ"){
+	    }else if(option == "NM"){
+	    }else if(option == "NY"){
+	    }else if(option == "NC"){
+	    }else if(option == "ND"){
+	    }else if(option == "OH"){
+	    }else if(option == "OK"){
+	    }else if(option == "OR"){
+	    }else if(option == "PA"){
+	    }else if(option == "RI"){
+	    }else if(option == "SC"){
+	    }else if(option == "SD"){
+	    }else if(option == "TN"){
+	    }else if(option == "TX"){
+	    }else if(option == "UT"){
+	    }else if(option == "VT"){
+	    }else if(option == "VA"){
+	    }else if(option == "WA"){
+	    }else if(option == "WV"){
+	    }else if(option == "WI"){
+	    }else if(option == "WY"){
+	    }else{
+	        isGood = false;
+	    }
+		
+	return isGood;
 }
 
 #endif 
