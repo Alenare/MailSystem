@@ -8,8 +8,9 @@
 using namespace std;
 
 //Struct to hold error type
+//Error numbers are defined as 1: input errors 
 struct errors{
-	int errorNum;
+	int errorNum; 
 	string errorInfo;
 };
 
@@ -30,6 +31,9 @@ int AuthenticateOption(vector<errors> errorStorage,string menu, int menuStart, i
 void AddPackage(vector<package>vectOne,vector<errors> vectTwo);
 void FAQMenu();
 void PrintError();
+string AuthenticateDate(state inputDate,vector<errors> vectTwo);
+string AuthenticateZip(string zipCode,vector<errors> vectTwo);
+string AuthenticateAbbreviation(string state,vector<errors> vectTwo);
 
 
 int main(){
@@ -114,29 +118,108 @@ int AuthenticateOption(vector<errors> errorStorage,string menu, int menuStart, i
 
 void AddPackage(vector<package> vectOne,vector<errors> vectTwo){
 	package tmp;
-	string word;
+	string value;
 	bool error = false;
 	
-	cout << "Please enter the current state format(MM/DD/YYYY): ";
-	getline(cin,word);
+	cout << "Please enter the current date format(MM/DD/YYYY): ";
+	getline(cin,value);
+	word = AuthenticateDate(value,vectTwo);
 	cout << endl;
 	
-	cout << "Please enter your city name: ";
-	getline(cin,word);
+	cout << "Please enter your city name (Georgetown, Fort Hags): ";
+	getline(cin,value);
 	cout << endl;
 	
-	cout << "Please enter your states abbreviation: ";
-	getline(cin,word);
+	cout << "Please enter your states abbreviation (AL,AK,AZ): ";
+	getline(cin,value);
+	word = AuthenticateAbbreviation(value,vectTwo);
 	cout << endl;
 	
-	cout << "Please enter your locatoin zip code: ";
-	getline(cin,word);
+	cout << "Please enter your locatoin zip code (000111): ";
+	getline(cin,value);
+	word = AuthenticateZip(value,vectTwo);
 	cout << endl;
 	
+	vectOne.push_back(tmp);
 	
 	
 	return ;
 }
+
+string AuthenticateZip(string zipCode,vector<errors> vectTwo){
+	string zip = zipCode;
+	int length = zipCode.length();
+	int i = 0;
+	error log;
+	bool logged = false;
+
+	while(i < length){
+		if(isdigit(zip.at(i)) == false){
+			cout << "There was a format input error detected re-enter the zipcode (000111): ";
+			getline(cin,zip);
+			cout << endl;
+			i = 0;
+			if(logged == false){
+				log.errorNum = 1;
+				log.errorInfo = "Input for the zipcode was incorrect.";
+				vectTwo.push_back(log);
+			}
+		}else{
+			i++;
+		}
+	}
+			
+	return date;
+}
+
+string AuthenticateAbbreviation(string state,vector<errors> vectTwo){
+	string abbreviation = state;
+	int length = inputDate.length();
+	int i = 0;
+	error log;
+	bool logged = false;
+
+	while(!RealAbbreviation(state)){
+		cout << "There was a format error or incorrect abbreviation detected re-enter the state abbreviation (AL,AK,AZ): ";
+		getline(cin,date);
+		cout << endl;
+		i = 0;
+		if(logged == false){
+			log.errorNum = 1;
+			log.errorInfo = "Input for the abbreviations was incorrect.";
+			vectTwo.push_back(log);
+		}
+	}
+
+}
+
+string AuthenticateDate(state inputDate,vector<errors> vectTwo){
+	string date = inputDate;
+	int length = inputDate.length();
+	int i = 0;
+	error log;
+	bool logged = false;
+
+	while(i < length){
+		if(isdigit(date.at(i)) == false or (date.at(2) == '/' and date.at(5) == '/'){
+			cout << "There was a format error or incorrect date detected re-enter the date (MM/DD/YYYY): ";
+			getline(cin,date);
+			cout << endl;
+			i = 0;
+			if(logged == false){
+				log.errorNum = 1;
+				log.errorInfo = "Input for the date was incorrect.";
+				vectTwo.push_back(log);
+			}
+		}else{
+			i++;
+		}
+	}
+			
+	return date;
+	
+}
+
 
 void FAQMenu(){
 	string option;
