@@ -8,7 +8,9 @@
 using namespace std;
 
 //Struct to hold error type
-//Error numbers are defined as 1: input errors 
+//Error numbers are defined as:
+// 1: input errors 
+// 
 struct errors{
 	int errorNum; 
 	string errorInfo;
@@ -28,10 +30,10 @@ const string FAQuMenu = "FAQ ";
 void PrintMenu();
 void FAQList();
 int AuthenticateOption(vector<errors> errorStorage,string menu, int menuStart, int menuFinish);
-void AddPackage(vector<package>vectOne,vector<errors> vectTwo);
+void AddPackage(vector<Package>vectOne,vector<errors> vectTwo);
 void FAQMenu();
 void PrintError();
-string AuthenticateDate(state inputDate,vector<errors> vectTwo);
+string AuthenticateDate(string inputDate,vector<errors> vectTwo);
 string AuthenticateZip(string zipCode,vector<errors> vectTwo);
 string AuthenticateAbbreviation(string state,vector<errors> vectTwo);
 
@@ -46,7 +48,7 @@ int main(){
     
 	while(num != 7){
 		if(num == 1){
-			AddPackage(packageSystem,errorStorage)
+			AddPackage(packageSystem,errorStorage);
 		}else if(num == 2){
 			
 		}else if(num == 3){
@@ -116,14 +118,14 @@ int AuthenticateOption(vector<errors> errorStorage,string menu, int menuStart, i
 	return num;
 }
 
-void AddPackage(vector<package> vectOne,vector<errors> vectTwo){
-	package tmp;
+void AddPackage(vector<Package> vectOne,vector<errors> vectTwo){
+    Package tmp;
 	string value;
 	bool error = false;
 	
 	cout << "Please enter the current date format(MM/DD/YYYY): ";
 	getline(cin,value);
-	word = AuthenticateDate(value,vectTwo);
+	value = AuthenticateDate(value,vectTwo);
 	cout << endl;
 	
 	cout << "Please enter your city name (Georgetown, Fort Hags): ";
@@ -132,14 +134,22 @@ void AddPackage(vector<package> vectOne,vector<errors> vectTwo){
 	
 	cout << "Please enter your states abbreviation (AL,AK,AZ): ";
 	getline(cin,value);
-	word = AuthenticateAbbreviation(value,vectTwo);
+	value = AuthenticateAbbreviation(value,vectTwo);
 	cout << endl;
 	
-	cout << "Please enter your locatoin zip code (000111): ";
+	cout << "Please enter your location zip code (000111): ";
 	getline(cin,value);
-	word = AuthenticateZip(value,vectTwo);
+	value = AuthenticateZip(value,vectTwo);
 	cout << endl;
 	
+	cout << "Please enter the final locatoin: ";
+	getline(cin,value);
+	cout << endl;
+	
+	cout << "Please enter the Package Type FRAGILE,LIQUIDS,NORMAL,BULKY as (0,1,2,3): ";
+	getline(cin,value);
+	cout << endl;
+
 	vectOne.push_back(tmp);
 	
 	
@@ -150,7 +160,7 @@ string AuthenticateZip(string zipCode,vector<errors> vectTwo){
 	string zip = zipCode;
 	int length = zipCode.length();
 	int i = 0;
-	error log;
+	errors log;
 	bool logged = false;
 
 	while(i < length){
@@ -169,19 +179,19 @@ string AuthenticateZip(string zipCode,vector<errors> vectTwo){
 		}
 	}
 			
-	return date;
+	return zip;
 }
 
 string AuthenticateAbbreviation(string state,vector<errors> vectTwo){
 	string abbreviation = state;
-	int length = inputDate.length();
+	int length = state.length();
 	int i = 0;
-	error log;
+	errors log;
 	bool logged = false;
 
 	while(!RealAbbreviation(state)){
-		cout << "There was a format error or incorrect abbreviation detected re-enter the state abbreviation (AL,AK,AZ): ";
-		getline(cin,date);
+		cout << "There was a format error or incorrect abbreviation detected re-enter the state abbreviation (AL,AK,AZ,Help): ";
+		getline(cin,abbreviation);
 		cout << endl;
 		i = 0;
 		if(logged == false){
@@ -189,19 +199,49 @@ string AuthenticateAbbreviation(string state,vector<errors> vectTwo){
 			log.errorInfo = "Input for the abbreviations was incorrect.";
 			vectTwo.push_back(log);
 		}
+		
+		if(abbreviation == "Help"){
+			
+		}
 	}
 
 }
 
-string AuthenticateDate(state inputDate,vector<errors> vectTwo){
+string AuthenticatePackageType(string value,vector<errors> vectTwo){
+	errors log;
+	bool logged = false;
+	
+	while(value != "0" or value != "1" or value != "2" or value != "3"){
+		cout << "There was an incorrect package type input please try again" << endl;
+		
+		cout << "Please enter the Package Type FRAGILE,LIQUIDS,NORMAL,BULKY as (0,1,2,3): ";
+		getline(cin,value);
+		cout << endl;
+		
+		if(logged == false){
+			log.errorNum = 1;
+			log.errorInfo = "Input for the package type was incorrect.";
+			vectTwo.push_back(log);
+		}
+		
+		if(value == "Help"){
+			PrintAbreviations();
+		}
+	}
+	
+	
+	return value;
+}
+
+string AuthenticateDate(string inputDate,vector<errors> vectTwo){
 	string date = inputDate;
 	int length = inputDate.length();
 	int i = 0;
-	error log;
+	errors log;
 	bool logged = false;
 
 	while(i < length){
-		if(isdigit(date.at(i)) == false or (date.at(2) == '/' and date.at(5) == '/'){
+		if(isdigit(date.at(i)) == false or (date.at(2) == '/' and date.at(5) == '/')){
 			cout << "There was a format error or incorrect date detected re-enter the date (MM/DD/YYYY): ";
 			getline(cin,date);
 			cout << endl;
