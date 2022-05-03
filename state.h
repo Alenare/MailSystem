@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <cctype>
 
 using namespace std;
 
@@ -13,121 +14,124 @@ bool RealAbbreviation(string abbreviation);
 void PrintAbreviations(){
     string option;
     bool canExit = false;
-	cout << "Be sure to capitalize the first letter and second letter of states when needed." << endl;
     
 	while(!canExit){    
-    	cout << "Enter the state name, to return to main menu enter Q: ";
+    	cout << "Enter the state name to get the corresponding abbreivation, to return to main menu enter Q: ";
 	    getline(cin,option);
 	    cout << endl;
+		
+		
 	    
-	    if(option == "Alabama"){
+	    if(option == "alabama"){
 	        cout << option << "'s abbreivation is: " << "AL" << endl;
-	    }else if(option == "Alaska"){
+	    }else if(option == "alaska"){
 	        cout << option << "'s abbreivation is: " << "AK" << endl;
-	    }else if(option == "Arizona"){
+	    }else if(option == "arizona"){
 	        cout << option << "'s abbreivation is: " << "AZ" << endl;
-	    }else if(option == "Arkansas"){
+	    }else if(option == "arkansas"){
 	        cout << option << "'s abbreivation is: " << "AK" << endl;
-	    }else if(option == "Californa"){
+	    }else if(option == "californa"){
 	        cout << option << "'s abbreivation is: " << "CA" << endl;
-	    }else if(option == "Colorado"){
+	    }else if(option == "colorado"){
 	        cout << option << "'s abbreivation is: " << "CO" << endl;
-	    }else if(option == "Conneticut"){
+	    }else if(option == "conneticut"){
 	        cout << option << "'s abbreivation is: " << "CT" << endl;
-	    }else if(option == "Delware"){
+	    }else if(option == "delware"){
 	        cout << option << "'s abbreivation is: " << "DE" << endl;
-	    }else if(option == "Florida"){
+	    }else if(option == "florida"){
 	        cout << option << "'s abbreivation is: " << "FL" << endl;
-	    }else if(option == "Georgia"){
+	    }else if(option == "georgia"){
 	        cout << option << "'s abbreivation is: " << "GA" << endl;
-	    }else if(option == "Hawaii"){
+	    }else if(option == "hawaii"){
 	        cout << option << "'s abbreivation is: " << "HI" << endl;
-	    }else if(option == "Idaho"){
+	    }else if(option == "idaho"){
 	        cout << option << "'s abbreivation is: " << "ID" << endl;
-	    }else if(option == "Illinois"){
+	    }else if(option == "illinois"){
 	        cout << option << "'s abbreivation is: " << "IL" << endl;
-	    }else if(option == "Indiana"){
+	    }else if(option == "indiana"){
 	        cout << option << "'s abbreivation is: " << "IN" << endl;
-	    }else if(option == "Iowa"){
+	    }else if(option == "iowa"){
 	        cout << option << "'s abbreivation is: " << "IA" << endl;
-	    }else if(option == "Kansas"){
+	    }else if(option == "kansas"){
 	        cout << option << "'s abbreivation is: " <<"KS" << endl;
-	    }else if(option == "Kentucky"){
+	    }else if(option == "kentucky"){
 	        cout << option << "'s abbreivation is: " << "KT" << endl;
-	    }else if(option == "Louisiana"){
+	    }else if(option == "louisiana"){
 	        cout << option << "'s abbreivation is: " << "LA" << endl;
-	    }else if(option == "Maine"){
+	    }else if(option == "maine"){
 	        cout << option << "'s abbreivation is: " << "ME" << endl;
-	    }else if(option == "Maryland"){
+	    }else if(option == "maryland"){
 	        cout << option << "'s abbreivation is: " << "MD" << endl;
-	    }else if(option == "Massachusetts"){
+	    }else if(option == "massachusetts"){
 	        cout << option << "'s abbreivation is: " << "MA" << endl;
-	    }else if(option == "Michigan"){
+	    }else if(option == "michigan"){
 	        cout << option << "'s abbreivation is: " << "MI" << endl;
-	    }else if(option == "Minnesota"){
+	    }else if(option == "minnesota"){
 	        cout << option << "'s abbreivation is: " << "MN" << endl;
-	    }else if(option == "Mississippi"){
+	    }else if(option == "mississippi"){
 	        cout << option << "'s abbreivation is: " << "MS" << endl;
-	    }else if(option == "Missouri"){
+	    }else if(option == "missouri"){
 	        cout << option << "'s abbreivation is: " << "MO" << endl;
-	    }else if(option == "Montana"){
+	    }else if(option == "montana"){
 	        cout << option << "'s abbreivation is: " << "MT" << endl;
-	    }else if(option == "Nebraska"){
+	    }else if(option == "nebraska"){
 	        cout << option << "'s abbreivation is: " << "NE" << endl;
-	    }else if(option == "Nevada"){
+	    }else if(option == "nevada"){
 	        cout << option << "'s abbreivation is: " << "NV" << endl;
-	    }else if(option == "New Hampshire"){
+	    }else if(option == "new hampshire"){
 	        cout << option << "'s abbreivation is: " << "NH" << endl;
-	    }else if(option == "New Jersey"){
+	    }else if(option == "new jersey"){
 	        cout << option << "'s abbreivation is: " << "NJ" << endl;
-	    }else if(option == "New Mexico"){
+	    }else if(option == "new mexico"){
 	        cout << option << "'s abbreivation is: " << "NM" << endl;
-	    }else if(option == "New York"){
+	    }else if(option == "new york"){
 	        cout << option << "'s abbreivation is: " << "NY" << endl;
-	    }else if(option == "North Carolina"){
+	    }else if(option == "north carolina"){
 	        cout << option << "'s abbreivation is: " << "NC" << endl;
-	    }else if(option == "North Dakota"){
+	    }else if(option == "north dakota"){
 	        cout << option << "'s abbreivation is: " << "ND" << endl;
-	    }else if(option == "Ohio"){
+	    }else if(option == "ohio"){
 	        cout << option << "'s abbreivation is: " << "OH" << endl;
-	    }else if(option == "Oklahoma"){
+	    }else if(option == "oklahoma"){
 	        cout << option << "'s abbreivation is: " << "OK" << endl;
-	    }else if(option == "Oregon"){
+	    }else if(option == "oregon"){
 	        cout << option << "'s abbreivation is: " << "OR" << endl;
-	    }else if(option == "Pennsylvania"){
+	    }else if(option == "pennsylvania"){
 	        cout << option << "'s abbreivation is: " << "PA" << endl;
-	    }else if(option == "Rhode Island"){
+	    }else if(option == "rhode island"){
 	        cout << option << "'s abbreivation is: " << "RI" << endl;
-	    }else if(option == "South Carolina"){
+	    }else if(option == "south carolina"){
 	        cout << option << "'s abbreivation is: " << "SC" << endl;
-	    }else if(option == "South Dakota"){
+	    }else if(option == "south dakota"){
 	        cout << option << "'s abbreivation is: " << "SD" << endl;
-	    }else if(option == "Tennessee"){
+	    }else if(option == "tennessee"){
 	        cout << option << "'s abbreivation is: " << "TN" << endl;
-	    }else if(option == "Texas"){
+	    }else if(option == "texas"){
 	        cout << option << "'s abbreivation is: " << "TX" << endl;
-	    }else if(option == "Utah"){
+	    }else if(option == "utah"){
 	        cout << option << "'s abbreivation is: " << "UT" << endl;
-	    }else if(option == "Vermont"){
+	    }else if(option == "vermont"){
 	        cout << option << "'s abbreivation is: " << "VT" << endl;
-	    }else if(option == "Virginia"){
+	    }else if(option == "virginia"){
 	        cout << option << "'s abbreivation is: " << "VA" << endl;
-	    }else if(option == "Washington"){
+	    }else if(option == "washington"){
 	        cout << option << "'s abbreivation is: " << "WA" << endl;
-	    }else if(option == "West Virginia"){
+	    }else if(option == "west virginia"){
 	        cout << option << "'s abbreivation is: " << "WV" << endl;
-	    }else if(option == "Wisconsin"){
+	    }else if(option == "wisconsin"){
 	        cout << option << "'s abbreivation is: " << "WI" << endl;
-	    }else if(option == "Wyoming"){
+	    }else if(option == "wyoming"){
 	        cout << option << "'s abbreivation is: " << "WY" << endl;
-	    }else if(option == "Q"){
+	    }else if(option == "q"){
 	        canExit = true;
 	    }else{
-	        cout << "Not a valid state try again" << endl;
+	        cout << "Not a valid option try again" << endl;
 	    }
     }
-	
-	bool RealAbbreviation(string abbreviation){
+    	    
+	return ;
+}
+bool RealAbbreviation(string abbreviation){
 		string option;
 		bool isGood = true;
     
@@ -188,5 +192,23 @@ void PrintAbreviations(){
 		
 	return isGood;
 }
+
+ string ToLowerCase(string value){
+    int length = value.length();
+	int i = 0;
+	string rv;
+
+	while(i <length){
+		if(value.at(i) != ' '){
+			rv = rv + char(tolower(value.at(i)));
+		}else{
+			rv = rv + ' ';
+		}
+		i++;
+	}
+	
+	return rv;
+}
+		
 
 #endif 
