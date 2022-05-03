@@ -1,10 +1,7 @@
 #ifndef PACKAGE_INFO
 #define PACKAGE_INFO
 
-#include <string>
-#include <stdlib.h>
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
